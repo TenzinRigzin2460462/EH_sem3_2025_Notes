@@ -1,111 +1,117 @@
 
-# 🐧 Linux Assistant Bot using Groq API
+# 🛡️ Ethical Hacking Assignment 1 – TCP and UDP Port Discovery
 
-This project is part of an Ethical Hacking assignment. It involves building a Python-based bot that accepts Linux-related questions from the user and fetches intelligent responses using the Groq API with the `llama3-70b-8192` language model.
-
----
-
-## 📌 Project Overview
-
-- **Purpose**: Simulate a Linux assistant bot using an LLM.
-- **Input**: A question related to Linux (e.g., "How to list hidden files in Linux?")
-- **Output**: A detailed answer fetched from the Groq AI API.
-- **Platform**: Runs via Python in the terminal (Windows/Linux/macOS supported).
-- **API Used**: Groq `chat/completions` endpoint with `llama3-70b-8192` model.
+**Assigned to:** SankaraNarayananS18  
+**Target:** `scanme.nmap.org`  
+**Tool Used:** Nmap / Zenmap  
+**Submission Directory:** `EH_sem3_2025_Notes/1st Assignment`  
+**Report Type:** One-page README with screenshot
 
 ---
 
-## ⚙️ Setup Instructions
+## 🎯 Objective
 
-### 1. Clone or Download the Repository
-
-If using Git:
-```bash
-git clone https://github.com/your-username/linux-groq-bot.git
-cd linux-groq-bot
-```
-Or just download the `.py` script directly.
+To scan both **TCP and UDP ports** of the target website `scanme.nmap.org` using **Nmap**, identify open ports and running services, and explain the difference between **TCP and UDP** protocols through real-world testing.
 
 ---
 
-### 2. Install Required Python Packages
+## 🧭 Step-by-Step Guide
 
-Ensure you have Python 3.7+ installed.
+> You can use **Zenmap GUI** (Nmap’s graphical interface) on **Windows or Linux**.
 
-Install the required module:
-```bash
-pip install requests
-```
+### 🖥️ Step 1: Open Zenmap
+- Install Nmap (includes Zenmap) from: [https://nmap.org/download.html](https://nmap.org/download.html)
+- Open **Zenmap** on your system
 
----
-
-### 3. Add Your Groq API Key
-
-Replace the placeholder in your script with your actual API key:
-
-```python
-headers = {
-    "Authorization": "Bearer YOUR_GROQ_API_KEY",
-    "Content-Type": "application/json"
-}
-```
-
-You can get your key from: [https://console.groq.com/keys](https://console.groq.com/keys)
-
----
-
-## 🚀 How to Use
-
-Run the bot from your terminal:
-
-```bash
-python groq_linux_bot.py
-```
-
-Then type your Linux question when prompted:
-```
-Ask your Linux question: How to list hidden files in Linux?
-```
-
-The bot will return a helpful explanation with command examples, like:
-```bash
-ls -a
-ls -A
-ls -d .*
-find -name '.*'
-ls | grep '^\.'
-```
-
----
-
-## 🖼️ Example Output Screenshot
-
-![Example Output](example.png)
-
-
----
-
-## 📝 Notes
-
-- If you get errors like `invalid_api_key` or `model_decommissioned`, make sure:
-  - Your API key is correct and active.
-  - You're using the supported model: `llama3-70b-8192`.
-
-- Some Linux distros alias `ls`, so default output might ignore hidden files. Use:
-  ```bash
-  alias ls='ls -a'
+### 🔍 Step 2: Set Scan Details
+- **Target:** `scanme.nmap.org`
+- **Command:**  
+  ```
+  nmap -sS -sU -T4 -v scanme.nmap.org
   ```
 
+### 🚀 Step 3: Run the Scan
+- Click **Scan** and wait for results to load (this may take a few minutes)
+
+### 💾 Step 4: Save the Results
+- After scan is complete:
+  - Click `Profile → Save Scan`
+  - Save it as `scan-results.txt` (optional for records)
+
+### 🖼️ Step 5: Screenshot and Upload
+- Take a screenshot of the Zenmap scan result screen
+- Name it `screenshot.png`
+- Upload `screenshot.png` along with this `README.md` in the assignment folder
+
 ---
 
-## 📄 License
+## 🔧 Nmap Command Breakdown
 
-This project is for educational purposes only under university Ethical Hacking coursework.
+```bash
+nmap -sS -sU -T4 -v scanme.nmap.org
+```
+
+| Flag   | Description                        |
+|--------|------------------------------------|
+| `-sS`  | TCP SYN scan (fast, stealthy)      |
+| `-sU`  | UDP scan                           |
+| `-T4`  | Aggressive timing (faster scan)    |
+| `-v`   | Verbose output                     |
 
 ---
 
-## 👨‍💻 Author
+## 🔍 Findings (Sample)
 
-**Tenzin Rigzin**  
-2460462 | 3BTCS AIML C
-July 2025  
+The scan revealed the following open ports and services:
+
+| Protocol | Port | Service      |
+|----------|------|--------------|
+| TCP      | 22   | SSH          |
+| TCP      | 80   | HTTP         |
+| UDP      | 123  | NTP (likely) |
+| UDP      | 161  | SNMP (likely)|
+
+> Actual output may vary slightly based on timing and version.
+
+---
+
+## 🔁 TCP vs UDP – Comparison Table
+
+| Feature          | TCP (Transmission Control Protocol) | UDP (User Datagram Protocol)      |
+|------------------|--------------------------------------|-----------------------------------|
+| Connection       | Yes (connection-oriented)            | No (connectionless)               |
+| Speed            | Slower (handshaking involved)        | Faster (no handshaking)           |
+| Reliability      | High (guarantees delivery)           | Low (no guarantee of delivery)    |
+| Use Cases        | Web, Email, SSH                      | Streaming, DNS, VoIP              |
+| Communication    | Two-way (acknowledged)               | One-way (fire-and-forget)         |
+
+**TCP is like a phone call** – confirmed delivery and two-way.  
+**UDP is like shouting** – fast but you don’t know if it reached.
+
+---
+
+## 🖼️ Screenshot of Scan
+
+> Upload the screenshot file as `screenshot.png` to your GitHub folder.
+
+![Scan Screenshot](./screenshot.png)
+
+---
+
+## ✅ Submission Checklist
+
+- [x] Scanned both TCP and UDP ports on `scanme.nmap.org`
+- [x] Saved scan output (optional)
+- [x] Added screenshot as `screenshot.png`
+- [x] Explained TCP vs UDP clearly
+- [x] Uploaded all to GitHub under correct directory
+
+---
+
+## 📘 Notes
+
+- This scan was performed on a **safe, authorized target**
+- Never scan domains you don’t have permission to test
+- For this assignment, you are acting as a **Security Analyst**
+
+---
