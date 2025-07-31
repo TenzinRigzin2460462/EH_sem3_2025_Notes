@@ -94,7 +94,7 @@ The scan revealed the following open ports and services:
 
 > Upload the screenshot file as `screenshot.png` to your GitHub folder.
 
-![Scan Screenshot](./screenshot.png)
+![Scan Screenshot](example.png)
 
 ---
 
