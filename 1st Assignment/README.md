@@ -107,5 +107,5 @@ This project is for educational purposes only under university Ethical Hacking c
 ## 👨‍💻 Author
 
 **Tenzin Rigzin**  
-BTech CSE | Christ University  
-July 2025 – Semester 3  
+2460462 | 3BTCS AIML C
+July 2025  
